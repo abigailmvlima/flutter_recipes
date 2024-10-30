@@ -1,4 +1,4 @@
-Aqui está um exemplo de `README.md` para o projeto que inclui a API em Node.js e o cliente em Flutter.
+Aqui está o `README.md` atualizado, incluindo informações sobre o uso do Docker, além dos endpoints de API para `categoria` e `receita`.
 
 ---
 
@@ -13,7 +13,13 @@ Este projeto é uma aplicação de receitas que inclui uma API em Node.js (local
 - [Configuração do Projeto](#configuração-do-projeto)
   - [Configuração da API](#configuração-da-api)
   - [Configuração do Cliente](#configuração-do-cliente)
+- [Utilizando Docker](#utilizando-docker)
+  - [Executando com Docker Compose](#executando-com-docker-compose)
+  - [Parando e Removendo Containers](#parando-e-removendo-containers)
 - [Scripts de Inicialização](#scripts-de-inicialização)
+- [Endpoints da API](#endpoints-da-api)
+  - [Endpoints de Categoria](#endpoints-de-categoria)
+  - [Endpoints de Receita](#endpoints-de-receita)
 - [Estrutura de Pastas](#estrutura-de-pastas)
 - [Contribuição](#contribuição)
 - [Licença](#licença)
@@ -22,7 +28,7 @@ Este projeto é uma aplicação de receitas que inclui uma API em Node.js (local
 
 - **API (Backend)**: Node.js, Express.js, MongoDB, Mongoose
 - **Cliente (Frontend)**: Flutter, Dart
-- **Containers**: Docker e Docker Compose (opcional para gerenciar MongoDB e API)
+- **Containers**: Docker e Docker Compose (para gerenciar MongoDB e API)
 
 ## Pré-requisitos
 
@@ -30,8 +36,8 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
 - [Node.js](https://nodejs.org/) - versão 14 ou superior
 - [Flutter](https://flutter.dev/) - versão estável mais recente
-- [MongoDB](https://www.mongodb.com/) - versão mais recente (local ou em container)
-- [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/) - opcional para ambientes containerizados
+- [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/) - para configurar MongoDB e API em containers
+- (Opcional) [MongoDB](https://www.mongodb.com/) - caso prefira rodar localmente sem Docker
 
 ## Configuração do Projeto
 
@@ -55,7 +61,7 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
    ```env
    PORT=3000
-   MONGO_URI=mongodb://localhost:27017/recipe_db
+   MONGO_URI=mongodb://mongo:27017/recipe_db
    ```
 
 4. **Inicialize a API**:
@@ -104,6 +110,61 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 
    O aplicativo será executado em um dispositivo ou emulador configurado.
 
+## Utilizando Docker
+
+### Executando com Docker Compose
+
+Para simplificar a execução da API e do MongoDB em containers, você pode usar o Docker Compose. Já deve existir um arquivo `docker-compose.yml` configurado na raiz do projeto ou na pasta `api/` com a estrutura necessária.
+
+1. **Crie o arquivo `docker-compose.yml`** (caso ainda não exista) na raiz do projeto ou na pasta `api/` com o seguinte conteúdo:
+
+   ```yaml
+   version: '3.8'
+   services:
+     mongo:
+       image: mongo
+       container_name: mongo
+       ports:
+         - "27017:27017"
+       volumes:
+         - mongo_data:/data/db
+
+     api:
+       build: ./api
+       container_name: recipe-api
+       ports:
+         - "3000:3000"
+       environment:
+         - MONGO_URI=mongodb://mongo:27017/recipe_db
+       volumes:
+         - ./api:/usr/src/app
+       depends_on:
+         - mongo
+
+   volumes:
+     mongo_data:
+   ```
+
+2. **Execute o Docker Compose**:
+
+   Na raiz do projeto ou na pasta onde o arquivo `docker-compose.yml` está localizado, execute:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+   Isso iniciará os serviços do MongoDB e da API em containers no modo detached (em segundo plano).
+
+### Parando e Removendo Containers
+
+Para parar e remover os containers criados pelo Docker Compose, use o comando:
+
+```bash
+docker-compose down
+```
+
+Esse comando encerra e remove todos os containers definidos no `docker-compose.yml`, mantendo os dados do volume `mongo_data`.
+
 ## Scripts de Inicialização
 
 ### Na API
@@ -128,6 +189,100 @@ Certifique-se de ter as seguintes ferramentas instaladas:
   flutter run
   ```
 
+## Endpoints da API
+
+### Endpoints de Categoria
+
+#### 1. Criar uma Nova Categoria
+
+- **Endpoint**: `POST /api/categories`
+- **Descrição**: Cria uma nova categoria de receita.
+- **Exemplo de Requisição**:
+
+  ```bash
+  curl -X POST http://localhost:3000/api/categories \
+    -H "Content-Type: application/json" \
+    -d '{
+          "description": "Salgado"
+        }'
+  ```
+
+- **Exemplo de Resposta**:
+
+  ```json
+  {
+    "_id": "60e8b58f1e4f4e6b5b3b9e4f",
+    "description": "Salgado",
+    "__v": 0
+  }
+  ```
+
+#### 2. Listar Todas as Categorias
+
+- **Endpoint**: `GET /api/categories`
+- **Descrição**: Retorna uma lista de todas as categorias.
+- **Exemplo de Requisição**:
+
+  ```bash
+  curl -X GET http://localhost:3000/api/categories
+  ```
+
+### Endpoints de Receita
+
+#### 1. Criar uma Nova Receita
+
+- **Endpoint**: `POST /api/recipes`
+- **Descrição**: Cria uma nova receita sem ingredientes.
+- **Exemplo de Requisição**:
+
+  ```bash
+  curl -X POST http://localhost:3000/api/recipes \
+    -H "Content-Type: application/json" \
+    -d '{
+          "category_id": "<ID_DA_CATEGORIA>",
+          "description": "Pão Caseiro",
+          "howtomake": "Misture todos os ingredientes e asse.",
+          "observations": "Asse por 40 minutos"
+        }'
+  ```
+
+#### 2. Listar Todas as Receitas com Ingredientes
+
+- **Endpoint**: `GET /api/recipes`
+- **Descrição**: Retorna uma lista de todas as receitas, incluindo os ingredientes associados.
+- **Exemplo de Requisição**:
+
+  ```bash
+  curl -X GET http://localhost:3000/api/recipes
+  ```
+
+#### 3. Adicionar Ingrediente a uma Receita
+
+- **Endpoint**: `POST /api/recipes/:recipe_id/ingredients`
+- **Descrição**: Adiciona um novo ingrediente a uma receita existente, associando-o pelo `recipe_id`.
+- **Exemplo de Requisição**:
+
+  ```bash
+  curl -X POST http://localhost:3000/api/recipes/<ID_DA_RECEITA>/ingredients \
+    -H "Content-Type: application/json" \
+    -d '{
+          "description": "Farinha",
+          "obs": "Tipo 1",
+          "unid": "g",
+          "quantity": 500
+        }'
+  ```
+
+#### 4. Excluir um Ingrediente de uma Receita
+
+- **Endpoint**: `DELETE /api/recipes/:recipe_id/ingredients/:ingredient_id`
+- **Descrição**: Exclui um ingrediente específico de uma receita com base nos IDs fornecidos.
+- **Exemplo de Requisição**:
+
+  ```bash
+  curl -X DELETE http://localhost:3000/api/recipes/<ID_DA_RECEITA>/ingredients/<ID_DO_INGREDIENTE>
+  ```
+
 ## Estrutura de Pastas
 
 ```plaintext
@@ -136,7 +291,9 @@ Certifique-se de ter as seguintes ferramentas instaladas:
 │   ├── models/         # Modelos de dados (Mongoose)
 │   ├── routes/         # Definição de rotas da API
 │   ├── .env            # Variáveis de ambiente para API
-│   ├── app.js          # Arquivo principal da API
+│   ├── app.js          # Arquivo
+
+ principal da API
 │   └── package.json    # Dependências e scripts da API
 └── client/             # Aplicativo cliente em Flutter
     ├── lib/            # Código principal do aplicativo Flutter
