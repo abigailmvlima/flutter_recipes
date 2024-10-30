@@ -1,4 +1,4 @@
-# Miscellaneous
+# General Ignored Files
 *.class
 *.log
 *.pyc
@@ -16,28 +16,58 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# VS Code
+.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-/build/
+# Node.js related (api/)
+api/node_modules/
+api/.env
+api/.env.*
+api/.env.local
+api/.env.development
+api/.env.production
+api/.env.test
+api/npm-debug.log*
+api/yarn-error.log*
+api/pids
+api/pids/*
+
+# Logs
+api/logs/
+api/*.log
+api/log/
+api/error.log
+api/output.log
+
+# Flutter/Dart/Pub related (client/)
+client/**/doc/api/
+client/**/ios/Flutter/.last_build_id
+client/.dart_tool/
+client/.flutter-plugins
+client/.flutter-plugins-dependencies
+client/.pub-cache/
+client/.pub/
+/client/build/
+
+# Environment Variables (client/)
+client/.env
+client/.env.*
+client/.env.local
+client/.env.development
+client/.env.production
+client/.env.test
 
 # Symbolication related
-app.*.symbols
+client/app.*.symbols
 
 # Obfuscation related
-app.*.map.json
+client/app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Android Studio build artifacts
+client/android/app/debug
+client/android/app/profile
+client/android/app/release
+
+# macOS build artifacts
+client/.ios/
+client/macos/Flutter/

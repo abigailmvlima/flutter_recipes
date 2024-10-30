@@ -1,0 +1,21 @@
+collection
+  category
+    id
+    description
+
+  recipe
+    id
+    category_id
+    description
+    ingredients []
+    howtomake
+    observations
+
+  ingredients
+    id
+    description
+    obs
+    unid
+    quantity
+    
+    
