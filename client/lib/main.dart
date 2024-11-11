@@ -1,6 +1,6 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
-import 'screens/category_screen.dart';
+import 'views/home_view.dart';
+import 'views/favorites_view.dart';
 
 void main() => runApp(const RecipesApp());
 
@@ -14,8 +14,13 @@ class RecipesApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
-      debugShowCheckedModeBanner: false, // Desativa a faixa de debug
-      home: const CategoryScreen(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/home',
+      routes: {
+        '/home': (context) => const HomeView(),
+        '/favorites': (context) => const FavoritesView(),
+        // Defina outras rotas conforme necessário
+      },
     );
   }
 }
