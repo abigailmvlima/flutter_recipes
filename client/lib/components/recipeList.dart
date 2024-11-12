@@ -12,14 +12,26 @@ class RecipeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Verifica se a lista está vazia e exibe uma mensagem de "sem receitas"
+    if (recipes.isEmpty) {
+      return Center(
+        child: Text(
+          'Nenhuma receita disponível',
+          style: TextStyle(color: Colors.grey[600], fontSize: 16),
+        ),
+      );
+    }
+
     return GridView.builder(
+      padding: const EdgeInsets.all(8),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2, // Duas colunas
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        childAspectRatio: 0.7, // Ajuste para aproximar-se do layout do print
+        childAspectRatio:
+            0.8, // Ajuste da proporção para melhor se aproximar do layout desejado
       ),
       itemCount: recipes.length,
       itemBuilder: (context, index) {
@@ -27,6 +39,7 @@ class RecipeList extends StatelessWidget {
         return GestureDetector(
           onTap: () => onTap(recipe['name'] ?? ''),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Stack(
                 children: [

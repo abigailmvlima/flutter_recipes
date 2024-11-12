@@ -36,7 +36,7 @@ class Menu extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.whatshot),
-          label: 'Em alta',
+          label: 'Em Alta',
         ),
       ],
       selectedLabelStyle: const TextStyle(

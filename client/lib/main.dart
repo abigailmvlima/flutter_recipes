@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'views/home_view.dart';
-import 'views/favorites_view.dart';
+import 'package:recipes_app/views/favorites_view.dart';
+import 'package:recipes_app/views/home_view.dart';
+import 'package:recipes_app/views/most_accessed_view';
 
 void main() => runApp(const RecipesApp());
 
@@ -19,6 +20,7 @@ class RecipesApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomeView(),
         '/favorites': (context) => const FavoritesView(),
+        '/most_accessed': (context) => const MostAccessedView(),
         // Defina outras rotas conforme necessário
       },
     );

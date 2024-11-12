@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipes_app/components/categoryList.dart';
 import 'package:recipes_app/components/header.dart';
 import 'package:recipes_app/components/menu.dart';
+import 'package:recipes_app/components/navigation_helper.dart';
 import 'package:recipes_app/components/recipeList.dart';
 import 'package:recipes_app/components/userDrawer.dart';
 
@@ -20,10 +21,9 @@ class HomeViewState extends State<HomeView> {
 
     setState(() {
       _selectedIndex = index;
-      if (index == 1) {
-        Navigator.pushReplacementNamed(context, '/favorites');
-      }
     });
+
+    navigateToPage(context, index);
   }
 
   @override
