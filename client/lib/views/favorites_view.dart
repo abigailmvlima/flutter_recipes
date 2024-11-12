@@ -3,8 +3,6 @@ import 'package:recipes_app/components/header.dart';
 import 'package:recipes_app/components/menu.dart';
 import 'package:recipes_app/components/navigation_helper.dart';
 import 'package:recipes_app/components/recipeList.dart';
-import 'package:recipes_app/utils/route_utils.dart';
-import 'package:recipes_app/views/home_view.dart'; // Importe o arquivo de utilidades
 
 class FavoritesView extends StatefulWidget {
   const FavoritesView({super.key});

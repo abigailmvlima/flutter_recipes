@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/views/home_view.dart';
 import 'package:recipes_app/views/favorites_view.dart';
-import 'package:recipes_app/views/most_accessed_view';
+import 'package:recipes_app/views/most_accessed_view.dart';
 // Importe outras views que você tiver, como AddView
 
 void navigateToPage(BuildContext context, int index) {

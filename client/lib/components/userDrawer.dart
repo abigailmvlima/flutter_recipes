@@ -12,7 +12,7 @@ class UserDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.pinkAccent,
               ),
               child: Row(
@@ -24,7 +24,7 @@ class UserDrawer extends StatelessWidget {
                         color: Colors.purple, size: 50),
                   ),
                   const SizedBox(width: 10),
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       'Abigail Lima',
                       style: TextStyle(
@@ -70,7 +70,8 @@ class UserDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                // Implementar a navegação ou ação para "Conversor de Medidas"
+                Navigator.pushNamed(context,
+                    '/measure_converter'); // Navega para a página do conversor
               },
             ),
           ],
