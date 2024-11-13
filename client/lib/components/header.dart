@@ -16,7 +16,7 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.pinkAccent,
+      backgroundColor: Theme.of(context).primaryColor,
       elevation: 0,
       title: Text(
         title,
