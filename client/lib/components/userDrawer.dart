@@ -59,7 +59,7 @@ class UserDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                // Implementar a navegação ou ação para "Adicionar Receita"
+                Navigator.pushNamed(context, '/add');
               },
             ),
             ListTile(
@@ -72,6 +72,19 @@ class UserDrawer extends StatelessWidget {
                 Navigator.of(context).pop();
                 Navigator.pushNamed(context,
                     '/measure_converter'); // Navega para a página do conversor
+              },
+            ),
+            // Adicionando novas opções ao Drawer
+            ListTile(
+              leading: const Icon(Icons.account_circle, color: Colors.purple),
+              title: const Text(
+                'Perfil',
+                style: TextStyle(color: Colors.purple),
+              ),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(
+                    context, '/profile'); // Navega para a página do perfil
               },
             ),
           ],

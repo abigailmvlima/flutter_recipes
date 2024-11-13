@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/views/add_recipe_view.dart';
 import 'package:recipes_app/views/home_view.dart';
 import 'package:recipes_app/views/favorites_view.dart';
 import 'package:recipes_app/views/most_accessed_view.dart';
@@ -26,6 +27,7 @@ void navigateToPage(BuildContext context, int index) {
   }
 
   // Agora, verifique se o routeName foi definido antes de chamar o Navigator
+  // ignore: unnecessary_null_comparison
   if (routeName != null) {
     Navigator.of(context).pushReplacement(
       PageRouteBuilder(
@@ -51,6 +53,8 @@ Widget _getPage(String routeName) {
       return const HomeView();
     case '/favorites':
       return const FavoritesView();
+    case '/add':
+      return const AddRecipeView();
     case '/most_accessed':
       return const MostAccessedView();
     default:
