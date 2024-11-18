@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class Menu extends StatelessWidget {
   final int currentIndex;
@@ -15,9 +16,9 @@ class Menu extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
-      backgroundColor: Colors.pinkAccent,
-      selectedItemColor: Colors.white,
-      unselectedItemColor: Colors.purple,
+      backgroundColor: Theme.of(context).primaryColor,
+      selectedItemColor: customPinkSwatch[300],
+      unselectedItemColor: Colors.white,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
@@ -41,10 +42,13 @@ class Menu extends StatelessWidget {
       ],
       selectedLabelStyle: const TextStyle(
         fontSize: 12,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Sedan',
       ),
       unselectedLabelStyle: const TextStyle(
         fontSize: 12,
+        fontWeight: FontWeight.normal,
+        fontFamily: 'Sedan',
       ),
     );
   }

@@ -76,10 +76,10 @@ class RecipeList extends StatelessWidget {
               Text(
                 recipe['name'] ?? '',
                 style: const TextStyle(
-                  color: Colors.purple,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
+                    color: Colors.purple,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'Sedan'),
               ),
             ],
           ),

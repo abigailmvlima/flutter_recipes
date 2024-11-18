@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 import 'custom_text_field.dart';
 
 class IngredientRow extends StatelessWidget {
@@ -23,7 +24,7 @@ class IngredientRow extends StatelessWidget {
         ),
         const SizedBox(width: 8),
         IconButton(
-          icon: const Icon(Icons.add, color: Colors.purple),
+          icon: Icon(Icons.add, color: customPinkSwatch[300]),
           onPressed: onAdd,
         ),
       ],

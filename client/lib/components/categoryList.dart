@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class CategoryList extends StatelessWidget {
   final List<Map<String, String>> categories;
@@ -31,20 +32,24 @@ class CategoryList extends StatelessWidget {
                     color: Colors.pinkAccent.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
-                  child: ClipOval(
-                    child: Image.asset(
-                      category['image'] ?? '',
-                      fit: BoxFit.cover,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: ClipOval(
+                      child: Image.asset(
+                        category['image'] ?? '',
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 5),
                 Text(
                   category['name'] ?? '',
-                  style: const TextStyle(
-                    color: Colors.pinkAccent,
+                  style: TextStyle(
+                    color: customPinkSwatch[300],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
+                    fontFamily: 'Sedan',
                   ),
                 ),
               ],

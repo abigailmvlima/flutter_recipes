@@ -6,6 +6,7 @@ import 'package:recipes_app/components/section_title.dart';
 import 'package:recipes_app/components/custom_text_field.dart';
 import 'package:recipes_app/components/image_picker_field.dart';
 import 'package:recipes_app/components/ingredient_row.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class AddRecipeView extends StatefulWidget {
   const AddRecipeView({super.key});
@@ -73,7 +74,7 @@ class AddRecipeViewState extends State<AddRecipeView> {
     return Center(
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.purple,
+          backgroundColor: customPinkSwatch[300],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -86,7 +87,8 @@ class AddRecipeViewState extends State<AddRecipeView> {
           'Salvar',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 16,
+            fontSize: 18,
+            fontFamily: 'Sedan',
           ),
         ),
       ),

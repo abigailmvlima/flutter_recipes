@@ -67,17 +67,6 @@ class HomeViewState extends State<HomeView> {
                 },
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-              child: Text(
-                'Receitas Populares',
-                style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: RecipeList(

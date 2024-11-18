@@ -3,6 +3,7 @@ import 'package:recipes_app/components/header.dart';
 import 'package:recipes_app/components/menu.dart';
 import 'package:recipes_app/components/section_title.dart';
 import 'package:recipes_app/components/custom_text_field.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -53,10 +54,11 @@ class ProfileView extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        const CircleAvatar(
+        CircleAvatar(
           radius: 50,
-          backgroundColor: Colors.purple,
-          child: Icon(Icons.account_circle, color: Colors.white, size: 80),
+          backgroundColor: customPinkSwatch[300],
+          child:
+              const Icon(Icons.account_circle, color: Colors.white, size: 100),
         ),
         Positioned(
           bottom: 0,
@@ -67,9 +69,9 @@ class ProfileView extends StatelessWidget {
               color: Colors.white,
               border: Border.all(color: Colors.purple, width: 2),
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(4),
-              child: Icon(Icons.add, color: Colors.purple, size: 18),
+            child: Padding(
+              padding: const EdgeInsets.all(4),
+              child: Icon(Icons.add, color: customPinkSwatch[300], size: 18),
             ),
           ),
         ),
@@ -95,6 +97,7 @@ class ProfileView extends StatelessWidget {
         style: TextStyle(
           color: Colors.white,
           fontSize: 16,
+          fontFamily: 'Sedan',
         ),
       ),
     );

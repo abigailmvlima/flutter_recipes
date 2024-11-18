@@ -21,10 +21,18 @@ class CustomTextField extends StatelessWidget {
     return TextField(
       obscureText: obscureText,
       maxLines: maxLines,
-      style: TextStyle(color: textColor), // Define a cor do texto
+      style: TextStyle(
+        color: textColor,
+        fontFamily: 'Sedan',
+        fontSize: 20,
+      ), // Define a cor do texto
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: hintColor), // Define a cor do hintText
+        hintStyle: TextStyle(
+          color: hintColor,
+          fontFamily: 'Sedan',
+          fontSize: 16,
+        ), // Define a cor do hintText
         filled: true,
         fillColor: Colors.grey.shade200,
         border: OutlineInputBorder(

@@ -18,12 +18,17 @@ class Header extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Theme.of(context).primaryColor,
       elevation: 0,
+      iconTheme: const IconThemeData(
+        color: Colors.white, // Define a cor do ícone de menu
+      ),
+      centerTitle: true,
       title: Text(
         title,
         style: const TextStyle(
           color: Colors.white,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          fontWeight: FontWeight.normal,
+          fontFamily: 'Sedan',
         ),
       ),
       actions: actions, // Define 'actions' no AppBar para ser configurável

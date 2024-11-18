@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class UserDrawer extends StatelessWidget {
   const UserDrawer({super.key});
@@ -7,31 +8,29 @@ class UserDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.pink.shade50,
+        color: customPinkSwatch[50],
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(
-                color: Colors.pinkAccent,
-              ),
               child: Row(
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.white,
                     child: Icon(Icons.account_circle,
-                        color: Colors.purple, size: 50),
+                        color: customPinkSwatch[300], size: 60),
                   ),
                   const SizedBox(width: 10),
-                  const Expanded(
+                  Expanded(
                     child: Text(
                       'Abigail Lima',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: customPinkSwatch[300],
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        shadows: [
+                        fontFamily: 'Sedan',
+                        shadows: const [
                           Shadow(
                             offset: Offset(0, 1),
                             blurRadius: 2,
@@ -42,7 +41,7 @@ class UserDrawer extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close, color: Colors.white),
+                    icon: Icon(Icons.close, color: customPinkSwatch[300]),
                     onPressed: () {
                       Navigator.of(context).pop(); // Fecha o drawer
                     },
@@ -50,12 +49,13 @@ class UserDrawer extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(color: Colors.purple),
+            Divider(color: customPinkSwatch[300]),
             ListTile(
-              leading: const Icon(Icons.add_box, color: Colors.purple),
-              title: const Text(
+              leading: Icon(Icons.add_box, color: customPinkSwatch[300]),
+              title: Text(
                 'Adicionar Receita',
-                style: TextStyle(color: Colors.purple),
+                style: TextStyle(
+                    color: customPinkSwatch[300], fontFamily: 'Sedan'),
               ),
               onTap: () {
                 Navigator.of(context).pop();
@@ -63,10 +63,11 @@ class UserDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.straighten, color: Colors.purple),
-              title: const Text(
+              leading: Icon(Icons.straighten, color: customPinkSwatch[300]),
+              title: Text(
                 'Conversor de Medidas',
-                style: TextStyle(color: Colors.purple),
+                style: TextStyle(
+                    color: customPinkSwatch[300], fontFamily: 'Sedan'),
               ),
               onTap: () {
                 Navigator.of(context).pop();
@@ -76,10 +77,11 @@ class UserDrawer extends StatelessWidget {
             ),
             // Adicionando novas opções ao Drawer
             ListTile(
-              leading: const Icon(Icons.account_circle, color: Colors.purple),
-              title: const Text(
+              leading: Icon(Icons.account_circle, color: customPinkSwatch[300]),
+              title: Text(
                 'Perfil',
-                style: TextStyle(color: Colors.purple),
+                style: TextStyle(
+                    color: customPinkSwatch[300], fontFamily: 'Sedan'),
               ),
               onTap: () {
                 Navigator.of(context).pop();

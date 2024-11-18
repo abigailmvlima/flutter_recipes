@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipes_app/components/header.dart';
 import 'package:recipes_app/components/menu.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class MeasureConverterView extends StatelessWidget {
   const MeasureConverterView({super.key});
@@ -24,7 +25,7 @@ class MeasureConverterView extends StatelessWidget {
                 '1/4 XÍCARA DE CHÁ = 60 ML',
               ],
             ),
-            const Divider(color: Colors.pinkAccent),
+            Divider(color: customPinkSwatch[100]),
             _buildSection(
               title: 'Colheres',
               items: [
@@ -34,7 +35,7 @@ class MeasureConverterView extends StatelessWidget {
                 '1 COLHER DE CAFÉ = 2,5 ML',
               ],
             ),
-            const Divider(color: Colors.pinkAccent),
+            Divider(color: customPinkSwatch[100]),
             _buildSection(
               title: 'Farinha de Trigo',
               items: [
@@ -44,7 +45,7 @@ class MeasureConverterView extends StatelessWidget {
                 '¼ DE XÍCARA DE CHÁ = 30 G',
               ],
             ),
-            const Divider(color: Colors.pinkAccent),
+            Divider(color: customPinkSwatch[100]),
             _buildSection(
               title: 'Açúcar',
               items: [
@@ -67,31 +68,35 @@ class MeasureConverterView extends StatelessWidget {
 
   // Função para construir cada seção de medidas
   Widget _buildSection({required String title, required List<String> items}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.pinkAccent,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: customPinkSwatch[300],
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Sedan',
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          ...items.map((item) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: Text(
-                  item,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 16,
+            const SizedBox(height: 8),
+            ...items.map((item) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
+                    item,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Sedan',
+                    ),
                   ),
-                ),
-              )),
-        ],
+                )),
+          ],
+        ),
       ),
     );
   }

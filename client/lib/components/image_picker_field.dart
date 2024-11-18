@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes_app/theme/app_theme.dart';
 
 class ImagePickerField extends StatelessWidget {
   final void Function()? onTap;
@@ -16,18 +17,19 @@ class ImagePickerField extends StatelessWidget {
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(8),
         ),
-        child: const Center(
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.add, color: Colors.purple, size: 30),
-              SizedBox(height: 8),
+              Icon(Icons.add, color: customPinkSwatch[300], size: 30),
+              const SizedBox(height: 8),
               Text(
                 'Inserir Imagem',
                 style: TextStyle(
-                  color: Colors.purple,
+                  color: customPinkSwatch[300],
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Sedan',
                 ),
               ),
             ],
