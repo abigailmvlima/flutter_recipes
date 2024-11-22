@@ -8,13 +8,17 @@ class SectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: TextStyle(
-        color: customPinkSwatch[300],
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        fontFamily: 'Sedan',
+    return Container(
+      margin:
+          const EdgeInsets.only(bottom: 3, top: 3), // Define a margem inferior
+      child: Text(
+        title,
+        style: TextStyle(
+          color: customPinkSwatch[300],
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          fontFamily: 'Sedan',
+        ),
       ),
     );
   }

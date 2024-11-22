@@ -62,8 +62,9 @@ class SplashScreenState extends State<SplashScreen> {
               'Caseiro',
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 40,
+                fontSize: 80,
                 fontWeight: FontWeight.bold,
+                fontFamily: 'Sedan',
                 shadows: [
                   Shadow(
                     offset: Offset(2, 2),

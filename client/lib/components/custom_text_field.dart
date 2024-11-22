@@ -31,13 +31,17 @@ class CustomTextField extends StatelessWidget {
         hintStyle: TextStyle(
           color: hintColor,
           fontFamily: 'Sedan',
-          fontSize: 16,
+          fontSize: 14,
         ), // Define a cor do hintText
         filled: true,
         fillColor: Colors.grey.shade200,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: BorderSide.none,
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16, // Padding horizontal (esquerda e direita)
+          vertical: 8, // Reduz o padding vertical
         ),
       ),
     );
